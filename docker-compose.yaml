@@ -6,8 +6,6 @@ version: "3"
 services:
   selenium-hub:
     image: selenium/hub:3.141.59
-    ports:
-      - "4444:4444"
     environment:
       - GRID_MAX_SESSION=16
       - GRID_BROWSER_TIMEOUT=300
@@ -48,7 +46,7 @@ services:
       - hub_host=selenium-hub
       - suite=smoke.xml
     volumes:
-      - ./smoke-results:/usr/share/auto/test-output
+      - ./output/smoke-results:/usr/share/auto/test-output
 
   regression-suite:
     image: amitkumarr99/selenium-docker
@@ -61,7 +59,7 @@ services:
       - hub_host=selenium-hub
       - suite=regression.xml
     volumes:
-      - ./regression-results:/usr/share/auto/test-output
+      - ./output/regression-results:/usr/share/auto/test-output
 
 
 

@@ -38,7 +38,7 @@ services:
       - NODE_MAX_INSTANCES=8
 
   smoke-suite:
-    image: seridocker/selenium-docker
+    image: amitkumarr99/selenium-docker
     depends_on:
      - chrome
      - firefox 
@@ -51,7 +51,7 @@ services:
       - ./smoke-results:/usr/share/auto/test-output
 
   regression-suite:
-    image: seridocker/selenium-docker
+    image: amitkumarr99/selenium-docker
     depends_on:
      - chrome
      - firefox 

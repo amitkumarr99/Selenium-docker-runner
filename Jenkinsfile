@@ -11,6 +11,7 @@ pipeline {
                 sh "docker-compose up  smoke-suite regression-suite"
             }
         }
+	}	
 	post{
 	    always{
 		    archiveArtifacts artifacts: 'output/**'  

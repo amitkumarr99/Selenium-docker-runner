@@ -45,7 +45,7 @@ services:
     environment:
       - browser=chrome
       - runType=remote
-      - hub_host=selenium-hub
+      - hub_host=192.168.43.152
       - suite=smoke.xml
     volumes:
       - ./output/smoke-results:/usr/share/auto/test-output
@@ -58,14 +58,8 @@ services:
     environment:
       - browser=chrome
       - runType=remote
-      - hub_host=selenium-hub
+      - hub_host=localhost
       - suite=regression.xml
     volumes:
       - ./output/regression-results:/usr/share/auto/test-output
-
-
-
-
-
-  
-  
+      

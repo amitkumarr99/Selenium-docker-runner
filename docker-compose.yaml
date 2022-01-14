@@ -25,18 +25,6 @@ services:
       - NODE_MAX_SESSION=8
       - NODE_MAX_INSTANCES=8
 
-  firefox:
-    image: selenium/node-firefox-debug:3.141.59
-    volumes:
-      - /dev/shm:/dev/shm
-    depends_on:
-      - selenium-hub
-    environment:
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
-      - NODE_MAX_SESSION=8
-      - NODE_MAX_INSTANCES=8
-
   smoke-suite:
     image: amitkumarr99/selenium-docker
     depends_on:
@@ -45,7 +33,7 @@ services:
     environment:
       - browser=chrome
       - runType=remote
-      - hub_host=localhost
+      - hub_host=192.168.43.152
       - suite=smoke.xml
     volumes:
       - ./output/smoke-results:/usr/share/auto/test-output
@@ -58,7 +46,7 @@ services:
     environment:
       - browser=chrome
       - runType=remote
-      - hub_host=localhost
+      - hub_host=192.168.43.152
       - suite=regression.xml
     volumes:
       - ./output/regression-results:/usr/share/auto/test-output

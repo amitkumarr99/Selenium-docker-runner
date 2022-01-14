@@ -8,7 +8,7 @@ pipeline {
         } 
         stage("Start Grid") {
             steps {   
-                sh "docker-compose up -d selenium-hub chrome firefox"
+                sh "docker-compose up -d selenium-hub chrome"
             }
         }
 	stage("Run Tests") {

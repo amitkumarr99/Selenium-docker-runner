@@ -45,7 +45,7 @@ services:
     environment:
       - browser=chrome
       - runType=remote
-      - hub_host=192.168.43.152
+      - hub_host=localhost
       - suite=smoke.xml
     volumes:
       - ./output/smoke-results:/usr/share/auto/test-output

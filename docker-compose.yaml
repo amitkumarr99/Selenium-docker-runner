@@ -6,44 +6,45 @@ version: "3"
 services:
   selenium-hub:
     image: selenium/hub:3.141.59
+    ports:
+      - "4444:4444"
     environment:
       - GRID_MAX_SESSION=16
       - GRID_BROWSER_TIMEOUT=300
       - GRID_TIMEOUT=300   
 
   chrome:
-    image: selenium/node-chrome-debug:3.141.59
+    image: selenium/node-chrome:3.141.59
     volumes:
       - /dev/shm:/dev/shm
     depends_on:
       - selenium-hub
     environment:
       - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
       - NODE_MAX_SESSION=8
       - NODE_MAX_INSTANCES=8
 
   smoke-suite:
     image: amitkumarr99/selenium-docker
     depends_on:
-     - chrome 
+     - chrome
     environment:
-      - browser=chrome
-      - runType=remote
-      - hub_host=selenium-hub
-      - suite=smoke.xml
+      - BROWSER=chrome
+      - RUNTYPE=remote
+      - HUB_HOST=selenium-hub
+      - SUITE=smoke.xml
     volumes:
       - ./output/smoke-results:/usr/share/auto/test-output
 
   regression-suite:
     image: amitkumarr99/selenium-docker
     depends_on:
-     - chrome
+     - chrome 
     environment:
-      - browser=chrome
-      - runType=remote
-      - hub_host=selenium-hub
-      - suite=regression.xml
+      - BROWSER=chrome
+      - RUNTYPE=remote
+      - HUB_HOST=localhost
+      - SUITE=regression.xml
     volumes:
       - ./output/regression-results:/usr/share/auto/test-output
       

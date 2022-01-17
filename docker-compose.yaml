@@ -6,8 +6,6 @@ version: "3"
 services:
   selenium-hub:
     image: selenium/hub:3.141.59
-    ports:
-      - "4444:4444"
     environment:
       - GRID_MAX_SESSION=16
       - GRID_BROWSER_TIMEOUT=300

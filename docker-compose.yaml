@@ -43,7 +43,7 @@ services:
     environment:
       - BROWSER=chrome
       - RUNTYPE=remote
-      - HUB_HOST=localhost
+      - HUB_HOST=selenium-hub
       - SUITE=regression.xml
     volumes:
       - ./output/regression-results:/usr/share/auto/test-output
